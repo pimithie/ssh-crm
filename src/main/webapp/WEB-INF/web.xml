@@ -5,7 +5,7 @@
   <!-- 全局编码过滤器  -->
   <filter>
   	<filter-name>CharacterEncodingFilter</filter-name>
-  	<filter-class>com.xiaqi.crm.web.filter.GenericEncodingFilter</filter-class>
+  	<filter-class>com.xiaqi.web.filter.GenericEncodingFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>CharacterEncodingFilter</filter-name>

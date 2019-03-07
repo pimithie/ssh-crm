@@ -167,7 +167,7 @@
 					<!-- 可以灵活配置工程路径 -->
 					<path>/ssh</path>
 					<!-- 可以灵活配置端口号 -->
-					<port>80</port>
+					<port>8080</port>
 				</configuration>
 			</plugin>
 

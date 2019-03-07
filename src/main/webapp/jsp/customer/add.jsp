@@ -69,10 +69,10 @@
 								<INPUT class=textbox id=sChannel2
 														style="WIDTH: 180px" maxLength=50 name="cust_source">
 								</td>
-								<td>联系人：</td>
+								<td>移动电话 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="cust_linkman">
+														style="WIDTH: 180px" maxLength=50 name="cust_mobile">
 								</td>
 							</TR>
 							
@@ -84,11 +84,7 @@
 								<INPUT class=textbox id=sChannel2
 														style="WIDTH: 180px" maxLength=50 name="cust_phone">
 								</td>
-								<td>移动电话 ：</td>
-								<td>
-								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="cust_mobile">
-								</td>
+								
 							</TR>
 							
 							<tr>
