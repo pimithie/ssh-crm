@@ -24,8 +24,6 @@
 		<property name="password" value="${jdbc.password}"></property>
 	</bean>
 
-
-
 	<!-- 整合hibernate -->
 	<!--在spring中配置hibernate属性 -->
 	<bean name="sessionFactory"
@@ -56,8 +54,16 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<!-- 注册userDao到spring容器中 -->
+	<!-- 注册Dao到spring容器中 -->
 	<bean name="userDao" class="com.xiaqi.dao.impl.UserDaoImpl">
+		<property name="template" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean name="customerDao" class="com.xiaqi.dao.impl.CustomerDaoImpl">
+		<property name="template" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean name="contactManDao" class="com.xiaqi.dao.impl.ContactManDaoImpl">
 		<property name="template" ref="hibernateTemplate"></property>
 	</bean>
 
@@ -67,26 +73,7 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<!-- 通知对象 -->
-	<tx:advice id="txAdvice"
-		transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="save*" isolation="REPEATABLE_READ"
-				propagation="REQUIRED" read-only="false" />
-			<tx:method name="update*" isolation="REPEATABLE_READ"
-				propagation="REQUIRED" read-only="false" />
-			<tx:method name="delete*" isolation="REPEATABLE_READ"
-				propagation="REQUIRED" read-only="false" />
-		</tx:attributes>
-	</tx:advice>
+	<!-- 开启声明式事务 -->
+	<tx:annotation-driven />
 	
-	<!-- 将通知对象织入目标对象 -->
-	<aop:config>
-		<!-- 执行表达式之后需更改为service实现类对应的包 -->
-		<aop:pointcut
-			expression="execution(* com.xiaqi.dao.impl.*Impl.*(..))"
-			id="txpc" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="txpc" />
-	</aop:config>
-
 </beans>

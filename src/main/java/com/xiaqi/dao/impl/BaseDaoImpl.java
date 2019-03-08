@@ -23,10 +23,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	
 	private HibernateTemplate template;
 	
-	public void setTemplate(HibernateTemplate template) {
-		this.template = template;
-	}
-
 	private Class clazz;
 	
 	public BaseDaoImpl() {
@@ -69,6 +65,14 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public List<T> list(DetachedCriteria detachedCriteria,int start,int pageSize) {
 		return (List<T>) template.findByCriteria(detachedCriteria,start,pageSize);
+	}
+	
+	public void setTemplate(HibernateTemplate template) {
+		this.template = template;
+	}
+
+	public HibernateTemplate getTemplate() {
+		return template;
 	}
 
 }

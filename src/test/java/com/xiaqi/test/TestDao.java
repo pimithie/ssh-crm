@@ -1,4 +1,4 @@
-package com.xiaqi.dao.test;
+package com.xiaqi.test;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class TestDao {
 		listAndPrint();
 		
 		//--------------------test the save method---------------
-//		User user = new User("王五","wangwu","456456","741258963");
+//		User user = new User("赵六","zhaoliu","456456","741258963");
 //		userDao.save(user);
 //		listAndPrint();
 		
@@ -49,12 +49,7 @@ public class TestDao {
 //		System.out.println("当前共有"+totalCount+"条记录.");
 		
 		//--------------test findById ----------------
-		System.out.println(userDao.findById(2));
-	}
-	
-	@Test
-	public void test() {
-		System.out.println("123");
+//		System.out.println(userDao.findById(2));
 	}
 	
 	private void listAndPrint() {
