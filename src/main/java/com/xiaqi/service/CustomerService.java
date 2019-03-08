@@ -1,6 +1,7 @@
 package com.xiaqi.service;
 
 import com.xiaqi.entity.Customer;
+import com.xiaqi.vo.PageBean;
 
 public interface CustomerService {
 	
@@ -21,5 +22,14 @@ public interface CustomerService {
 	 * @param customer 被修改的客户对象
 	 */
 	public void updateCustomer(Customer customer);
+	
+	/**
+	 * 获取分页数据对象
+	 * @param customer 封装条件的实体对象
+	 * @param currentPage 当前页数
+	 * @param pageSize 当前页显示大小
+	 * @return 分页数据对象
+	 */
+	public PageBean<Customer> getPageBean(Customer customer,int currentPage,int pageSize);
 	
 }

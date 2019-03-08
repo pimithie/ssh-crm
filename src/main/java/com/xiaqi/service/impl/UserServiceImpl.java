@@ -1,6 +1,7 @@
 package com.xiaqi.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.xiaqi.dao.UserDao;
 import com.xiaqi.entity.User;
 import com.xiaqi.service.UserService;
+import com.xiaqi.vo.PageBean;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -43,6 +45,28 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void updateUser(User user) {
 		userDao.update(user);
+	}
+
+	@Override
+	public PageBean<User> getPageBean(User user,int currentPage,int pageSize) {
+		//实例化pageBean对象
+		PageBean<User> pageBean = new PageBean<>();
+		pageBean.setPageSize(pageSize);
+		pageBean.setCurrentPage(currentPage);
+		//调用dao层获得总记录数
+		DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
+		criteria.add(Restrictions.like("real_name","%"+user.getReal_name()+"%"));
+		Long totalCount = userDao.getTotalCount(criteria);
+		pageBean.setTotalCount(totalCount);
+		//计算获得总页数
+		int totalPages = (int) Math.ceil(1.0*totalCount/pageSize);
+		pageBean.setTotalPages(totalPages);
+		//获得分页数据
+		//移除聚合函数count
+		criteria.setProjection(null);
+		List<User> list = userDao.list(criteria, (currentPage-1)*pageSize, pageSize);
+		pageBean.setList(list);
+		return pageBean;
 	}
 
 }

@@ -1,5 +1,9 @@
 package com.xiaqi.service.impl;
 
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,10 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.xiaqi.dao.ContactManDao;
 import com.xiaqi.entity.ContactMan;
 import com.xiaqi.service.ContactManService;
+import com.xiaqi.vo.PageBean;
 
 @Service
 public class ContactManServiceImpl implements ContactManService {
-	
+
 	@Autowired
 	private ContactManDao contactDao;
 
@@ -30,6 +35,28 @@ public class ContactManServiceImpl implements ContactManService {
 	@Transactional
 	public void updateContactMan(ContactMan contactMan) {
 		contactDao.update(contactMan);
+	}
+
+	@Override
+	public PageBean<ContactMan> getPageBean(ContactMan contactMan, int currentPage, int pageSize) {
+		// 实例化pageBean对象
+		PageBean<ContactMan> pageBean = new PageBean<>();
+		pageBean.setPageSize(pageSize);
+		pageBean.setCurrentPage(currentPage);
+		// 调用dao层获得总记录数
+		DetachedCriteria criteria = DetachedCriteria.forClass(ContactMan.class);
+		criteria.add(Restrictions.like("contactManName", "%" + contactMan.getContactManName() + "%"));
+		Long totalCount = contactDao.getTotalCount(criteria);
+		pageBean.setTotalCount(totalCount);
+		// 计算获得总页数
+		int totalPages = (int) Math.ceil(1.0 * totalCount / pageSize);
+		pageBean.setTotalPages(totalPages);
+		// 获得分页数据
+		// 移除聚合函数count
+		criteria.setProjection(null);
+		List<ContactMan> list = contactDao.list(criteria, (currentPage - 1) * pageSize, pageSize);
+		pageBean.setList(list);
+		return pageBean;
 	}
 
 }

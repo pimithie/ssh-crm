@@ -9,7 +9,7 @@ import java.util.List;
 public class PageBean<T> {
 	
 	//总记录数(dao查询)
-	private Long getTotalCount;
+	private Long totalCount;
 	
 	//总页数(计算)
 	private int totalPages;
@@ -20,15 +20,17 @@ public class PageBean<T> {
 	//当前页数(前台传)
 	private int currentPage;
 	
-	//当前页数据(前台传)
+	//当前页数据(dao查询)
 	private List<T> list;
 
-	public Long getGetTotalCount() {
-		return getTotalCount;
+	
+	
+	public Long getTotalCount() {
+		return totalCount;
 	}
 
-	public void setGetTotalCount(Long getTotalCount) {
-		this.getTotalCount = getTotalCount;
+	public void setTotalCount(Long totalCount) {
+		this.totalCount = totalCount;
 	}
 
 	public int getTotalPages() {
