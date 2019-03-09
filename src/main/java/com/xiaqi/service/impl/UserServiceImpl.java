@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public PageBean<User> getPageBean(User user,int currentPage,int pageSize) {
 		//实例化pageBean对象
 		PageBean<User> pageBean = new PageBean<>();

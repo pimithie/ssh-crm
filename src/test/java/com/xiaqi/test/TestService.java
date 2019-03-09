@@ -4,6 +4,8 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,6 +21,8 @@ import com.xiaqi.vo.PageBean;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 public class TestService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(TestService.class);
 
 	@Resource
 	private UserService userService;
@@ -73,11 +77,10 @@ public class TestService {
 		// customerService.deleteCustomer(customer);
 
 		// 测试分页接口
-		// Customer customer = new Customer();
-		// customer.setCustomer_name("百");
-		// PageBean<Customer> pageBean = customerService.getPageBean(customer, 1, 3);
-		// System.out.println(pageBean.getList());
-
+		 Customer customer = new Customer();
+		 customer.setCustomer_name("百");
+		 PageBean<Customer> pageBean = customerService.getPageBean(customer, 1, 3);
+		 logger.info(pageBean.getList().toString());
 	}
 
 	@Autowired

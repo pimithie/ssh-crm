@@ -38,6 +38,7 @@ public class ContactManServiceImpl implements ContactManService {
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public PageBean<ContactMan> getPageBean(ContactMan contactMan, int currentPage, int pageSize) {
 		// 实例化pageBean对象
 		PageBean<ContactMan> pageBean = new PageBean<>();
