@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public boolean login(String username,String password) {
+	public User login(String username,String password) {
 		//封装查询条件
 		DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
 		Map<String,String> condition = new HashMap<>();
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		//调用dao层
 		User u = userDao.findUserByUsernameAndPassword(criteria);
 		//返回结果
-		return null != u;
+		return u;
 	}
 
 	@Override
@@ -49,11 +49,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly=true)
-	public PageBean<User> getPageBean(User user,int currentPage,int pageSize) {
+	public PageBean<User> getPageBean(User user,Integer currentPage,Integer pageSize) {
 		//实例化pageBean对象
 		PageBean<User> pageBean = new PageBean<>();
+		//判断前台是否传入当前页数
+		if (null == currentPage) {
+			pageBean.setCurrentPage(1);
+		} else {
+			pageBean.setCurrentPage(currentPage);
+		}
 		pageBean.setPageSize(pageSize);
-		pageBean.setCurrentPage(currentPage);
 		//调用dao层获得总记录数
 		DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
 		criteria.add(Restrictions.like("real_name","%"+user.getReal_name()+"%"));

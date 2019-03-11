@@ -5,7 +5,6 @@ package com.xiaqi.entity;
  */
 public class User {
 	
-
 	// 用户id
 	private Integer user_id;
 	// 用户真实姓名

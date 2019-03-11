@@ -12,19 +12,17 @@ public class PageBean<T> {
 	private Long totalCount;
 	
 	//总页数(计算)
-	private int totalPages;
+	private Integer totalPages;
 	
 	//页面显示多少条记录(前台传)
-	private int pageSize;
+	private Integer pageSize;
 	
 	//当前页数(前台传)
-	private int currentPage;
+	private Integer currentPage;
 	
 	//当前页数据(dao查询)
 	private List<T> list;
 
-	
-	
 	public Long getTotalCount() {
 		return totalCount;
 	}
@@ -33,27 +31,27 @@ public class PageBean<T> {
 		this.totalCount = totalCount;
 	}
 
-	public int getTotalPages() {
+	public Integer getTotalPages() {
 		return totalPages;
 	}
 
-	public void setTotalPages(int totalPages) {
+	public void setTotalPages(Integer totalPages) {
 		this.totalPages = totalPages;
 	}
 
-	public int getPageSize() {
+	public Integer getPageSize() {
 		return pageSize;
 	}
 
-	public void setPageSize(int pageSize) {
+	public void setPageSize(Integer pageSize) {
 		this.pageSize = pageSize;
 	}
 
-	public int getCurrentPage() {
+	public Integer getCurrentPage() {
 		return currentPage;
 	}
 
-	public void setCurrentPage(int currentPage) {
+	public void setCurrentPage(Integer currentPage) {
 		this.currentPage = currentPage;
 	}
 
@@ -64,5 +62,12 @@ public class PageBean<T> {
 	public void setList(List<T> list) {
 		this.list = list;
 	}
+
+	@Override
+	public String toString() {
+		return "PageBean [totalCount=" + totalCount + ", totalPages=" + totalPages + ", pageSize=" + pageSize
+				+ ", currentPage=" + currentPage + ", list=" + list + "]";
+	}
+
 	
 }

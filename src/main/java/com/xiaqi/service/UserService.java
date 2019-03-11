@@ -10,9 +10,9 @@ public interface UserService {
 	 * 登录 服务接口
 	 * @param username 用户名
 	 * @param password 用户名
-	 * @return 是否登录成功
+	 * @return 当前用户对象
 	 */
-	public boolean login(String username,String password);
+	public User login(String username,String password);
 	
 	/**
 	 * 新增用户接口
@@ -33,6 +33,6 @@ public interface UserService {
 	 * @param pageSize 当前页显示大小
 	 * @return 分页数据对象
 	 */
-	public PageBean<User> getPageBean(User user,int currentPage,int pageSize);
+	public PageBean<User> getPageBean(User user,Integer currentPage,Integer pageSize);
 	
 }
