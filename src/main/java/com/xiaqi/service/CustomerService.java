@@ -30,6 +30,6 @@ public interface CustomerService {
 	 * @param pageSize 当前页显示大小
 	 * @return 分页数据对象
 	 */
-	public PageBean<Customer> getPageBean(Customer customer,int currentPage,int pageSize);
+	public PageBean<Customer> getPageBean(Customer customer,Integer currentPage,Integer pageSize);
 	
 }

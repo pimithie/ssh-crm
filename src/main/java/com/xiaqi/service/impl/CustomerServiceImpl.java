@@ -40,9 +40,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	@Transactional(readOnly=true)
-	public PageBean<Customer> getPageBean(Customer customer, int currentPage, int pageSize) {
+	public PageBean<Customer> getPageBean(Customer customer, Integer currentPage, Integer pageSize) {
 		// 实例化pageBean对象
 		PageBean<Customer> pageBean = new PageBean<>();
+		//判断是否传入当前页数，若无默认显示第一页
+		if (null == currentPage || 0 == currentPage) {
+			currentPage = 1;
+		}
 		pageBean.setPageSize(pageSize);
 		pageBean.setCurrentPage(currentPage);
 		// 调用dao层获得总记录数

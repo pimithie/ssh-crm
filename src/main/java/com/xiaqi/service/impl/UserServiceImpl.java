@@ -53,11 +53,10 @@ public class UserServiceImpl implements UserService {
 		//实例化pageBean对象
 		PageBean<User> pageBean = new PageBean<>();
 		//判断前台是否传入当前页数
-		if (null == currentPage) {
-			pageBean.setCurrentPage(1);
-		} else {
-			pageBean.setCurrentPage(currentPage);
+		if (null == currentPage || 0 == currentPage) {
+			currentPage = 1;
 		}
+		pageBean.setCurrentPage(currentPage);
 		pageBean.setPageSize(pageSize);
 		//调用dao层获得总记录数
 		DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
