@@ -11,8 +11,8 @@
 	<!-- 处理用户的Action -->
 	<package name="user_action" namespace="/user" extends="struts-default">
 		<action name="userAction_*" class="userAction" method="{1}">
-			<result name="login_success" type="redirect">index.htm</result>
-			<result name="login_failed">login.htm</result>
+			<result name="login_success" type="redirect">/index.htm</result>
+			<result name="login_failed">/login.htm</result>
 		</action>
 	</package>
 	

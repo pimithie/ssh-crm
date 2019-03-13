@@ -20,7 +20,7 @@ public class UserAction implements ModelDriven<User>{
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	//接收前台录入的信息
-	private User user;
+	private User user = new User();
 	
 	//接收当前页数
 	private Integer currentPage;
