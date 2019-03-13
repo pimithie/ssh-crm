@@ -39,9 +39,13 @@ public class ContactManServiceImpl implements ContactManService {
 
 	@Override
 	@Transactional(readOnly=true)
-	public PageBean<ContactMan> getPageBean(ContactMan contactMan, int currentPage, int pageSize) {
+	public PageBean<ContactMan> getPageBean(ContactMan contactMan, Integer currentPage, Integer pageSize) {
 		// 实例化pageBean对象
 		PageBean<ContactMan> pageBean = new PageBean<>();
+		// 判断前台是否传入当前页数
+		if (null == currentPage || 0 == currentPage) {
+			currentPage = 1;
+		}
 		pageBean.setPageSize(pageSize);
 		pageBean.setCurrentPage(currentPage);
 		// 调用dao层获得总记录数

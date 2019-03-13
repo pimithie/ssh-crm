@@ -30,6 +30,6 @@ public interface ContactManService {
 	 * @param pageSize 当前页显示大小
 	 * @return 分页数据对象
 	 */
-	public PageBean<ContactMan> getPageBean(ContactMan contactMan,int currentPage,int pageSize);
+	public PageBean<ContactMan> getPageBean(ContactMan contactMan,Integer currentPage,Integer pageSize);
 	
 }
