@@ -8,6 +8,7 @@ Using maven, spring, struts2, hibernate to build a customer relationship managem
 1. Merging the three major frameworks,integrating ssh frameworks,and finishing the dao development.
 2. Finishing the service layer development.
 3. Finishing the web layer development.
+4. Finishing the data presentation.(unfinished)
 ---
 
 #### 介绍
@@ -17,5 +18,6 @@ Using maven, spring, struts2, hibernate to build a customer relationship managem
 1. ssh框架的整合，Dao层的开发
 2. service层的开发
 3. 完成web层开发
+4. 完成数据的展现(待完成)
 
 
